@@ -1,0 +1,6 @@
+Malloc'ing 128 banks ...
+DONE
+Malloc'ing another (out of space) ...
+DONE
+Malloc addr return val: 0
+CPU Halt Requested

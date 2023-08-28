@@ -1,0 +1,5 @@
+Enter size of malloc request [bytes]: 
+Performing malloc ...
+DONE
+Address of new malloc chunk: b700
+CPU Halt Requested

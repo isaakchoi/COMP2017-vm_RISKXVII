@@ -1,0 +1,13 @@
+slt (1 < 0): 0
+slt (0 < 0): 0
+slt (-1 < 0): 1
+slti (1 < 0): 0
+slti (0 < 0): 0
+slti (-1 < 0): 1
+sltu (1 < 0): 0
+sltu (0 < 0): 0
+sltu (0 < 1): 1
+sltiu (0 < 1): 1
+sltiu (1 < 1): 0
+sltiu (2 < 1): 0
+CPU Halt Requested

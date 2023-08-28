@@ -1,0 +1,23 @@
+Enter num to shift: 
+Enter ammount to shift: 
+Enter shift ammount less than 0: 
+Enter shift ammount greater than 32: 
+
+Shift using given normal ammount ...
+Shift left: 10
+Shift right: 4
+Shift right wrap: 4
+
+
+Shift using given < 0 ammount ...
+Shift left negative: 0
+Shift right negative: 0
+Shift right wrap negative: 0
+
+
+Shift using given over bounds ammount ...
+Shift left over bounds: 0
+Shift right over bounds: 4
+Shift right wrap over bounds: 4
+
+CPU Halt Requested

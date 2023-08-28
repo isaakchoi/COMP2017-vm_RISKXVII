@@ -1,0 +1,8 @@
+Enter char to be used as byte: 
+Given char: C
+Storing char as byte
+Storing 0xFFFF as half
+Storing 0xFFFFFFFF as word
+Storing 0xFFFF as unsigned half
+Storing 0xFF as signed byte
+CPU Halt Requested

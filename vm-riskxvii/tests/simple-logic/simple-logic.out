@@ -1,0 +1,9 @@
+Enter number to do FANCY LOGIC on: 
+Enter another number: 
+a ^ b: 3
+a | b: 7
+a & b: 4
+a | 0b01010101: 55
+a & 0b01010101: 5
+a ^ 0b01010101: 50
+CPU Halt Requested

@@ -1,0 +1,30 @@
+CURRENT IMPLEMENTATION ...
+
+Allow accessing across border between consecutive allocation chunks
+
+malloc call with size zero:
+* Error - Return null pointer
+
+PC Exceeds instruction memory (above or below bounds):
+* Throw error
+
+Memory access outside bounds:
+* Allow read access to instruction, data, and allocated heap memory
+* Allow wrtie access to data and allocated heap memory
+* Allow access across valid data sections
+
+Invalid int given for virtual routine 'read int' AND read char:
+* Uses returned value of scanf("%d"), may be -1, may be undefined
+* Continues with this value without error
+
+Register overflow:
+* Follow system dependent behaviour
+
+Error checks file opening and reading:
+* Ensure exactly one CL input given
+* File size must be exactly 2048
+* Exits on fopen/fread/... errors
+
+Negative number, or n > size, given for shift ammount in bit shift instructions:
+* Set value to all zeroes but continue without error
+* allow n > size for sra, but crop shift

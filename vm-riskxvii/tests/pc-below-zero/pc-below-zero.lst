@@ -1,0 +1,36 @@
+
+pc-below-zero/pc-below-zero:     file format elf32-littleriscv
+
+
+Disassembly of section .text:
+
+00000000 <_start>:
+   0:	7ff00113          	li	sp,2047
+   4:	034000ef          	jal	ra,38 <main>
+   8:	000017b7          	lui	a5,0x1
+   c:	80078623          	sb	zero,-2036(a5) # 80c <ADDR_END+0xc>
+
+00000010 <jump_under_pc_limit>:
+  10:	fe010113          	addi	sp,sp,-32
+  14:	00812e23          	sw	s0,28(sp)
+  18:	02010413          	addi	s0,sp,32
+  1c:	be5ff7ef          	jal	a5,fffffc00 <ADDR_END+0xfffff400>
+  20:	fef42623          	sw	a5,-20(s0)
+  24:	fec42783          	lw	a5,-20(s0)
+  28:	00078513          	mv	a0,a5
+  2c:	01c12403          	lw	s0,28(sp)
+  30:	02010113          	addi	sp,sp,32
+  34:	00008067          	ret
+
+00000038 <main>:
+  38:	ff010113          	addi	sp,sp,-16
+  3c:	00112623          	sw	ra,12(sp)
+  40:	00812423          	sw	s0,8(sp)
+  44:	01010413          	addi	s0,sp,16
+  48:	fc9ff0ef          	jal	ra,10 <jump_under_pc_limit>
+  4c:	00000793          	li	a5,0
+  50:	00078513          	mv	a0,a5
+  54:	00c12083          	lw	ra,12(sp)
+  58:	00812403          	lw	s0,8(sp)
+  5c:	01010113          	addi	sp,sp,16
+  60:	00008067          	ret

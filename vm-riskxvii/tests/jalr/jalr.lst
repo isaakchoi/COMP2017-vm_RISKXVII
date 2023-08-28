@@ -1,0 +1,40 @@
+
+jalr/jalr:     file format elf32-littleriscv
+
+
+Disassembly of section .text:
+
+00000000 <_start>:
+   0:	7ff00113          	li	sp,2047
+   4:	03c000ef          	jal	ra,40 <main>
+   8:	000017b7          	lui	a5,0x1
+   c:	80078623          	sb	zero,-2036(a5) # 80c <ADDR_END+0xc>
+
+00000010 <inst_jalr>:
+  10:	fd010113          	addi	sp,sp,-48
+  14:	02812623          	sw	s0,44(sp)
+  18:	03010413          	addi	s0,sp,48
+  1c:	fca42e23          	sw	a0,-36(s0)
+  20:	fdc42783          	lw	a5,-36(s0)
+  24:	064787e7          	jalr	a5,100(a5)
+  28:	fef42623          	sw	a5,-20(s0)
+  2c:	fec42783          	lw	a5,-20(s0)
+  30:	00078513          	mv	a0,a5
+  34:	02c12403          	lw	s0,44(sp)
+  38:	03010113          	addi	sp,sp,48
+  3c:	00008067          	ret
+
+00000040 <main>:
+  40:	fe010113          	addi	sp,sp,-32
+  44:	00112e23          	sw	ra,28(sp)
+  48:	00812c23          	sw	s0,24(sp)
+  4c:	02010413          	addi	s0,sp,32
+  50:	fe042623          	sw	zero,-20(s0)
+  54:	fec42503          	lw	a0,-20(s0)
+  58:	fb9ff0ef          	jal	ra,10 <inst_jalr>
+  5c:	00000793          	li	a5,0
+  60:	00078513          	mv	a0,a5
+  64:	01c12083          	lw	ra,28(sp)
+  68:	01812403          	lw	s0,24(sp)
+  6c:	02010113          	addi	sp,sp,32
+  70:	00008067          	ret

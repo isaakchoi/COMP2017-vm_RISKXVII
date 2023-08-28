@@ -1,0 +1,232 @@
+
+all-shifts/all-shifts:     file format elf32-littleriscv
+
+
+Disassembly of section .text:
+
+00000000 <_start>:
+   0:	7ff00113          	li	sp,2047
+   4:	11c000ef          	jal	ra,120 <main>
+   8:	000017b7          	lui	a5,0x1
+   c:	80078623          	sb	zero,-2036(a5) # 80c <ADDR_END+0xc>
+
+00000010 <sra>:
+  10:	fd010113          	addi	sp,sp,-48
+  14:	02812623          	sw	s0,44(sp)
+  18:	03010413          	addi	s0,sp,48
+  1c:	fca42e23          	sw	a0,-36(s0)
+  20:	fcb42c23          	sw	a1,-40(s0)
+  24:	fd842783          	lw	a5,-40(s0)
+  28:	fdc42703          	lw	a4,-36(s0)
+  2c:	40f757b3          	sra	a5,a4,a5
+  30:	fef42623          	sw	a5,-20(s0)
+  34:	fec42783          	lw	a5,-20(s0)
+  38:	00078513          	mv	a0,a5
+  3c:	02c12403          	lw	s0,44(sp)
+  40:	03010113          	addi	sp,sp,48
+  44:	00008067          	ret
+
+00000048 <print_string>:
+  48:	fe010113          	addi	sp,sp,-32
+  4c:	00812e23          	sw	s0,28(sp)
+  50:	02010413          	addi	s0,sp,32
+  54:	fea42623          	sw	a0,-20(s0)
+  58:	0200006f          	j	78 <print_string+0x30>
+  5c:	fec42783          	lw	a5,-20(s0)
+  60:	00178713          	addi	a4,a5,1
+  64:	fee42623          	sw	a4,-20(s0)
+  68:	00001737          	lui	a4,0x1
+  6c:	80070713          	addi	a4,a4,-2048 # 800 <ADDR_END>
+  70:	0007c783          	lbu	a5,0(a5)
+  74:	00f70023          	sb	a5,0(a4)
+  78:	fec42783          	lw	a5,-20(s0)
+  7c:	0007c783          	lbu	a5,0(a5)
+  80:	fc079ee3          	bnez	a5,5c <print_string+0x14>
+  84:	00000013          	nop
+  88:	00000013          	nop
+  8c:	01c12403          	lw	s0,28(sp)
+  90:	02010113          	addi	sp,sp,32
+  94:	00008067          	ret
+
+00000098 <get_int>:
+  98:	ff010113          	addi	sp,sp,-16
+  9c:	00812623          	sw	s0,12(sp)
+  a0:	01010413          	addi	s0,sp,16
+  a4:	000017b7          	lui	a5,0x1
+  a8:	81678793          	addi	a5,a5,-2026 # 816 <ADDR_END+0x16>
+  ac:	0007a783          	lw	a5,0(a5)
+  b0:	00078513          	mv	a0,a5
+  b4:	00c12403          	lw	s0,12(sp)
+  b8:	01010113          	addi	sp,sp,16
+  bc:	00008067          	ret
+
+000000c0 <sll>:
+  c0:	fe010113          	addi	sp,sp,-32
+  c4:	00812e23          	sw	s0,28(sp)
+  c8:	02010413          	addi	s0,sp,32
+  cc:	fea42623          	sw	a0,-20(s0)
+  d0:	feb42423          	sw	a1,-24(s0)
+  d4:	fe842783          	lw	a5,-24(s0)
+  d8:	fec42703          	lw	a4,-20(s0)
+  dc:	00f717b3          	sll	a5,a4,a5
+  e0:	00078513          	mv	a0,a5
+  e4:	01c12403          	lw	s0,28(sp)
+  e8:	02010113          	addi	sp,sp,32
+  ec:	00008067          	ret
+
+000000f0 <srl>:
+  f0:	fe010113          	addi	sp,sp,-32
+  f4:	00812e23          	sw	s0,28(sp)
+  f8:	02010413          	addi	s0,sp,32
+  fc:	fea42623          	sw	a0,-20(s0)
+ 100:	feb42423          	sw	a1,-24(s0)
+ 104:	fe842783          	lw	a5,-24(s0)
+ 108:	fec42703          	lw	a4,-20(s0)
+ 10c:	40f757b3          	sra	a5,a4,a5
+ 110:	00078513          	mv	a0,a5
+ 114:	01c12403          	lw	s0,28(sp)
+ 118:	02010113          	addi	sp,sp,32
+ 11c:	00008067          	ret
+
+00000120 <main>:
+ 120:	fe010113          	addi	sp,sp,-32
+ 124:	00112e23          	sw	ra,28(sp)
+ 128:	00812c23          	sw	s0,24(sp)
+ 12c:	00912a23          	sw	s1,20(sp)
+ 130:	02010413          	addi	s0,sp,32
+ 134:	40000513          	li	a0,1024
+ 138:	f11ff0ef          	jal	ra,48 <print_string>
+ 13c:	f5dff0ef          	jal	ra,98 <get_int>
+ 140:	fea42623          	sw	a0,-20(s0)
+ 144:	41800513          	li	a0,1048
+ 148:	f01ff0ef          	jal	ra,48 <print_string>
+ 14c:	41c00513          	li	a0,1052
+ 150:	ef9ff0ef          	jal	ra,48 <print_string>
+ 154:	f45ff0ef          	jal	ra,98 <get_int>
+ 158:	fea42423          	sw	a0,-24(s0)
+ 15c:	41800513          	li	a0,1048
+ 160:	ee9ff0ef          	jal	ra,48 <print_string>
+ 164:	43800513          	li	a0,1080
+ 168:	ee1ff0ef          	jal	ra,48 <print_string>
+ 16c:	f2dff0ef          	jal	ra,98 <get_int>
+ 170:	fea42223          	sw	a0,-28(s0)
+ 174:	41800513          	li	a0,1048
+ 178:	ed1ff0ef          	jal	ra,48 <print_string>
+ 17c:	45c00513          	li	a0,1116
+ 180:	ec9ff0ef          	jal	ra,48 <print_string>
+ 184:	f15ff0ef          	jal	ra,98 <get_int>
+ 188:	fea42023          	sw	a0,-32(s0)
+ 18c:	41800513          	li	a0,1048
+ 190:	eb9ff0ef          	jal	ra,48 <print_string>
+ 194:	48400513          	li	a0,1156
+ 198:	eb1ff0ef          	jal	ra,48 <print_string>
+ 19c:	4ac00513          	li	a0,1196
+ 1a0:	ea9ff0ef          	jal	ra,48 <print_string>
+ 1a4:	000017b7          	lui	a5,0x1
+ 1a8:	80878493          	addi	s1,a5,-2040 # 808 <ADDR_END+0x8>
+ 1ac:	fe842583          	lw	a1,-24(s0)
+ 1b0:	fec42503          	lw	a0,-20(s0)
+ 1b4:	f0dff0ef          	jal	ra,c0 <sll>
+ 1b8:	00050793          	mv	a5,a0
+ 1bc:	00f4a023          	sw	a5,0(s1)
+ 1c0:	41800513          	li	a0,1048
+ 1c4:	e85ff0ef          	jal	ra,48 <print_string>
+ 1c8:	4bc00513          	li	a0,1212
+ 1cc:	e7dff0ef          	jal	ra,48 <print_string>
+ 1d0:	000017b7          	lui	a5,0x1
+ 1d4:	80878493          	addi	s1,a5,-2040 # 808 <ADDR_END+0x8>
+ 1d8:	fe842583          	lw	a1,-24(s0)
+ 1dc:	fec42503          	lw	a0,-20(s0)
+ 1e0:	f11ff0ef          	jal	ra,f0 <srl>
+ 1e4:	00050793          	mv	a5,a0
+ 1e8:	00f4a023          	sw	a5,0(s1)
+ 1ec:	41800513          	li	a0,1048
+ 1f0:	e59ff0ef          	jal	ra,48 <print_string>
+ 1f4:	4cc00513          	li	a0,1228
+ 1f8:	e51ff0ef          	jal	ra,48 <print_string>
+ 1fc:	000017b7          	lui	a5,0x1
+ 200:	80878493          	addi	s1,a5,-2040 # 808 <ADDR_END+0x8>
+ 204:	fe842583          	lw	a1,-24(s0)
+ 208:	fec42503          	lw	a0,-20(s0)
+ 20c:	e05ff0ef          	jal	ra,10 <sra>
+ 210:	00050793          	mv	a5,a0
+ 214:	00f4a023          	sw	a5,0(s1)
+ 218:	4e000513          	li	a0,1248
+ 21c:	e2dff0ef          	jal	ra,48 <print_string>
+ 220:	4e400513          	li	a0,1252
+ 224:	e25ff0ef          	jal	ra,48 <print_string>
+ 228:	50800513          	li	a0,1288
+ 22c:	e1dff0ef          	jal	ra,48 <print_string>
+ 230:	000017b7          	lui	a5,0x1
+ 234:	80878493          	addi	s1,a5,-2040 # 808 <ADDR_END+0x8>
+ 238:	fe442583          	lw	a1,-28(s0)
+ 23c:	fec42503          	lw	a0,-20(s0)
+ 240:	e81ff0ef          	jal	ra,c0 <sll>
+ 244:	00050793          	mv	a5,a0
+ 248:	00f4a023          	sw	a5,0(s1)
+ 24c:	41800513          	li	a0,1048
+ 250:	df9ff0ef          	jal	ra,48 <print_string>
+ 254:	52000513          	li	a0,1312
+ 258:	df1ff0ef          	jal	ra,48 <print_string>
+ 25c:	000017b7          	lui	a5,0x1
+ 260:	80878493          	addi	s1,a5,-2040 # 808 <ADDR_END+0x8>
+ 264:	fe442583          	lw	a1,-28(s0)
+ 268:	fec42503          	lw	a0,-20(s0)
+ 26c:	e85ff0ef          	jal	ra,f0 <srl>
+ 270:	00050793          	mv	a5,a0
+ 274:	00f4a023          	sw	a5,0(s1)
+ 278:	41800513          	li	a0,1048
+ 27c:	dcdff0ef          	jal	ra,48 <print_string>
+ 280:	53800513          	li	a0,1336
+ 284:	dc5ff0ef          	jal	ra,48 <print_string>
+ 288:	000017b7          	lui	a5,0x1
+ 28c:	80878493          	addi	s1,a5,-2040 # 808 <ADDR_END+0x8>
+ 290:	fe442583          	lw	a1,-28(s0)
+ 294:	fec42503          	lw	a0,-20(s0)
+ 298:	d79ff0ef          	jal	ra,10 <sra>
+ 29c:	00050793          	mv	a5,a0
+ 2a0:	00f4a023          	sw	a5,0(s1)
+ 2a4:	4e000513          	li	a0,1248
+ 2a8:	da1ff0ef          	jal	ra,48 <print_string>
+ 2ac:	55400513          	li	a0,1364
+ 2b0:	d99ff0ef          	jal	ra,48 <print_string>
+ 2b4:	58000513          	li	a0,1408
+ 2b8:	d91ff0ef          	jal	ra,48 <print_string>
+ 2bc:	000017b7          	lui	a5,0x1
+ 2c0:	80878493          	addi	s1,a5,-2040 # 808 <ADDR_END+0x8>
+ 2c4:	fe042583          	lw	a1,-32(s0)
+ 2c8:	fec42503          	lw	a0,-20(s0)
+ 2cc:	df5ff0ef          	jal	ra,c0 <sll>
+ 2d0:	00050793          	mv	a5,a0
+ 2d4:	00f4a023          	sw	a5,0(s1)
+ 2d8:	41800513          	li	a0,1048
+ 2dc:	d6dff0ef          	jal	ra,48 <print_string>
+ 2e0:	59c00513          	li	a0,1436
+ 2e4:	d65ff0ef          	jal	ra,48 <print_string>
+ 2e8:	000017b7          	lui	a5,0x1
+ 2ec:	80878493          	addi	s1,a5,-2040 # 808 <ADDR_END+0x8>
+ 2f0:	fe042583          	lw	a1,-32(s0)
+ 2f4:	fec42503          	lw	a0,-20(s0)
+ 2f8:	df9ff0ef          	jal	ra,f0 <srl>
+ 2fc:	00050793          	mv	a5,a0
+ 300:	00f4a023          	sw	a5,0(s1)
+ 304:	41800513          	li	a0,1048
+ 308:	d41ff0ef          	jal	ra,48 <print_string>
+ 30c:	5b800513          	li	a0,1464
+ 310:	d39ff0ef          	jal	ra,48 <print_string>
+ 314:	000017b7          	lui	a5,0x1
+ 318:	80878493          	addi	s1,a5,-2040 # 808 <ADDR_END+0x8>
+ 31c:	fe042583          	lw	a1,-32(s0)
+ 320:	fec42503          	lw	a0,-20(s0)
+ 324:	cedff0ef          	jal	ra,10 <sra>
+ 328:	00050793          	mv	a5,a0
+ 32c:	00f4a023          	sw	a5,0(s1)
+ 330:	4e000513          	li	a0,1248
+ 334:	d15ff0ef          	jal	ra,48 <print_string>
+ 338:	00000793          	li	a5,0
+ 33c:	00078513          	mv	a0,a5
+ 340:	01c12083          	lw	ra,28(sp)
+ 344:	01812403          	lw	s0,24(sp)
+ 348:	01412483          	lw	s1,20(sp)
+ 34c:	02010113          	addi	sp,sp,32
+ 350:	00008067          	ret

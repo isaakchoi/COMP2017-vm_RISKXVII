@@ -1,0 +1,7 @@
+Memory Leak Summary
+-----------------------------------
+address : 0x143e067d0
+size    : 100 bytes
+file    : src/vm_riskxvii.c
+line    : 32
+-----------------------------------

@@ -1,0 +1,70 @@
+
+simple-control-flow-3/simple-control-flow-3:     file format elf32-littleriscv
+
+
+Disassembly of section .text:
+
+00000000 <_start>:
+   0:	7ff00113          	li	sp,2047
+   4:	084000ef          	jal	ra,88 <main>
+   8:	000017b7          	lui	a5,0x1
+   c:	80078623          	sb	zero,-2036(a5) # 80c <ADDR_END+0xc>
+
+00000010 <print_string>:
+  10:	fe010113          	addi	sp,sp,-32
+  14:	00812e23          	sw	s0,28(sp)
+  18:	02010413          	addi	s0,sp,32
+  1c:	fea42623          	sw	a0,-20(s0)
+  20:	0200006f          	j	40 <print_string+0x30>
+  24:	fec42783          	lw	a5,-20(s0)
+  28:	00178713          	addi	a4,a5,1
+  2c:	fee42623          	sw	a4,-20(s0)
+  30:	00001737          	lui	a4,0x1
+  34:	80070713          	addi	a4,a4,-2048 # 800 <ADDR_END>
+  38:	0007c783          	lbu	a5,0(a5)
+  3c:	00f70023          	sb	a5,0(a4)
+  40:	fec42783          	lw	a5,-20(s0)
+  44:	0007c783          	lbu	a5,0(a5)
+  48:	fc079ee3          	bnez	a5,24 <print_string+0x14>
+  4c:	00000013          	nop
+  50:	00000013          	nop
+  54:	01c12403          	lw	s0,28(sp)
+  58:	02010113          	addi	sp,sp,32
+  5c:	00008067          	ret
+
+00000060 <get_int>:
+  60:	ff010113          	addi	sp,sp,-16
+  64:	00812623          	sw	s0,12(sp)
+  68:	01010413          	addi	s0,sp,16
+  6c:	000017b7          	lui	a5,0x1
+  70:	81678793          	addi	a5,a5,-2026 # 816 <ADDR_END+0x16>
+  74:	0007a783          	lw	a5,0(a5)
+  78:	00078513          	mv	a0,a5
+  7c:	00c12403          	lw	s0,12(sp)
+  80:	01010113          	addi	sp,sp,16
+  84:	00008067          	ret
+
+00000088 <main>:
+  88:	fe010113          	addi	sp,sp,-32
+  8c:	00112e23          	sw	ra,28(sp)
+  90:	00812c23          	sw	s0,24(sp)
+  94:	02010413          	addi	s0,sp,32
+  98:	40000513          	li	a0,1024
+  9c:	f75ff0ef          	jal	ra,10 <print_string>
+  a0:	fc1ff0ef          	jal	ra,60 <get_int>
+  a4:	fea42623          	sw	a0,-20(s0)
+  a8:	fec42703          	lw	a4,-20(s0)
+  ac:	00f00793          	li	a5,15
+  b0:	00e7e863          	bltu	a5,a4,c0 <main+0x38>
+  b4:	41800513          	li	a0,1048
+  b8:	f59ff0ef          	jal	ra,10 <print_string>
+  bc:	0100006f          	j	cc <main+0x44>
+  c0:	44400513          	li	a0,1092
+  c4:	f4dff0ef          	jal	ra,10 <print_string>
+  c8:	00000013          	nop
+  cc:	00000793          	li	a5,0
+  d0:	00078513          	mv	a0,a5
+  d4:	01c12083          	lw	ra,28(sp)
+  d8:	01812403          	lw	s0,24(sp)
+  dc:	02010113          	addi	sp,sp,32
+  e0:	00008067          	ret

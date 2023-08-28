@@ -1,0 +1,17 @@
+beq (1 == 1): true
+beq (1 == 0): false
+bne (1 != 1): false
+bne (1 != 0): true
+blt (1 < 1): false
+blt (1 < 2): true
+blt (1 < 0): false
+bltu (1 < 0): false
+bltu (1 < 1): false
+bltu (1 < 2): true
+bge (1 >= 0): true
+bge (1 >= 1): true
+bge (1 >= 2): false
+bgeu (1 >= 0): true
+bgeu (1 >= 1): true
+bgeu (1 >= 2): false
+CPU Halt Requested
